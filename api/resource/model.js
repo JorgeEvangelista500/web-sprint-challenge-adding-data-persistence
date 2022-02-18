@@ -1,6 +1,6 @@
-const db = require('../../data/dbConfig')
 
 // build your `Resource` model here
+const db = require('../../data/dbConfig')
 
 function getResources() {
     return db('resources')
