@@ -3,6 +3,7 @@ const db = require('../../data/dbConfig')
 
 async function getTasks() {
     const results = await db('tasks')
+    .leftJoin('projects', 'tasks.project_id','projects.project_id')
 
     const updatedResults = results.map(res => {
         return {

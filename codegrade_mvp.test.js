@@ -125,7 +125,7 @@ describe('server.js', () => {
   // 👉 TASKS
   // 👉 TASKS
   // 👉 TASKS
-  describe('tasks endpoints', () => {
+  describe.only('tasks endpoints', () => {
     beforeEach(async () => {
       await db('projects').insert(projectA)
       await db('projects').insert(projectB)
