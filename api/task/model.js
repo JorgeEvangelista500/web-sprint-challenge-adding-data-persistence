@@ -15,9 +15,9 @@ async function getTasks() {
 function addTask(task) {
     return db('tasks')
       .insert(task)
-      .then(([task_id]) => { 
-        const results = db('tasks').where('task_id', task_id ).first()
-        return results
+      .then(async ([task_id]) => { 
+        const results = await db('tasks').where('task_id', task_id ).first()
+        return {...results, task_completed: results.task_completed === 0 ? false: true}
       })
   }
 

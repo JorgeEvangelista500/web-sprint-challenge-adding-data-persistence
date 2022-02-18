@@ -172,7 +172,7 @@ describe('server.js', () => {
         })
       }, 750)
     })
-    describe.only('[POST] /api/tasks', () => {
+    describe('[POST] /api/tasks', () => {
       test('[13] can add a new task to the db', async () => {
         await db('tasks').truncate()
         await request(server).post('/api/tasks').send(taskA)

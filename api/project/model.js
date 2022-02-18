@@ -17,10 +17,9 @@ async function getProjects() {
 function addProjects(project) {
     return db('projects')
       .insert(project)
-      .then(([project_id]) => { 
-        const results = db('projects').where('project_id', project_id ).first()
-        results.project_completed === 0 ? false: true
-        return results
+      .then(async ([project_id]) => { 
+        const results = await db('projects').where('project_id', project_id ).first()
+        return {...results, project_completed: results.project_completed === 0 ? false: true}
       })
   }
 
