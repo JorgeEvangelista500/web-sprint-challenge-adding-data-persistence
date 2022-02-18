@@ -125,7 +125,7 @@ describe('server.js', () => {
   // 👉 TASKS
   // 👉 TASKS
   // 👉 TASKS
-  describe.only('tasks endpoints', () => {
+  describe('tasks endpoints', () => {
     beforeEach(async () => {
       await db('projects').insert(projectA)
       await db('projects').insert(projectB)
@@ -172,7 +172,7 @@ describe('server.js', () => {
         })
       }, 750)
     })
-    describe('[POST] /api/tasks', () => {
+    describe.only('[POST] /api/tasks', () => {
       test('[13] can add a new task to the db', async () => {
         await db('tasks').truncate()
         await request(server).post('/api/tasks').send(taskA)

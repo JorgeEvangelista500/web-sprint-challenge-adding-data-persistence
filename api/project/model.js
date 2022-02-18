@@ -14,23 +14,18 @@ async function getProjects() {
       
  }
 
-// async function postProject(project) {
-//     return db('projects')
-//         .insert(project)
-//         .then((['project_id']) => { // eslint-disable-line
-//             return db('projects').where('project_id', project_id)
-//         })
-
-// }
-
 function addProjects(project) {
     return db('projects')
       .insert(project)
-      .then(([project_id]) => { // eslint-disable-line
-        return db('projects').where('project_id', project_id )
+      .then(([project_id]) => { 
+        const results = db('projects').where('project_id', project_id ).first()
+        results.project_completed === 0 ? false: true
+        return results
       })
   }
+
   
 module.exports = {
     getProjects,
+    addProjects,
 }
